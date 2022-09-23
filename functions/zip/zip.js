@@ -8,11 +8,18 @@ exports.handler = async (event, context) => {
 	/**
 	 * Get SVG post data
 	 */
-	let fields = {},
-		vars = event.body.split('&');
-	for(const field of vars) {
-		let pair = field.split('=');
-		fields[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]).replace(/\+/g, ' ');
+	let fields = {};
+
+	if(event.body) {
+		let vars = event.body.split('&');
+		for(const field of vars) {
+			let pair = field.split('=');
+			fields[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]).replace(/\+/g, ' ');
+		}
+	}
+
+	if(!fields.svg) {
+		fields.svg = '<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg"><circle fill="#f00" fill-rule="nonzero" cx="200" cy="200" r="200"/></svg>';
 	}
 
 	/**
