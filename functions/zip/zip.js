@@ -1,6 +1,6 @@
 const sharp = require('sharp');
 const ico = require("sharp-ico");
-const zip = new require('node-zip')();
+const zip = require('node-zip')();
 const { optimize } = require('svgo');
 
 exports.handler = async (event, context) => {
