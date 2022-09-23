@@ -1,6 +1,7 @@
 const sharp = require('sharp');
 const ico = require("sharp-ico");
 const zip = new require('node-zip')();
+const { optimize } = require('svgo');
 
 exports.handler = async (event, context) => {
 
@@ -17,7 +18,14 @@ exports.handler = async (event, context) => {
 	/**
 	 * Main SVG
 	 */
-	let buffer = Buffer.from(fields.svg);
+	const svgOptimised = optimize(fields.svg, {
+		// all config fields are also available here
+		multipass: true,
+	});
+	const optimisedSvgString = svgOptimised.data;
+	zip.file(`favicon.svg`, optimisedSvgString);
+
+	let buffer = Buffer.from(optimisedSvgString);
 
 	/**
 	 * PNG Favicons
