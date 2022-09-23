@@ -62,7 +62,7 @@ exports.handler = async (event, context) => {
 	let typo3 = await sharp(buffer)
 		.resize(512, 512)
 		.composite([
-			{ input: './dist/typo-favicon-mask.png', gravity: 'southeast'}
+			{ input: 'typo-favicon-mask.png', gravity: 'southeast'}
 		])
 		.png()
 		.toBuffer();
