@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Page Title</title>
+		<title>Zero-Config Favicon Generator</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" href="">
 		<style>
@@ -10,7 +10,8 @@
 				font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 				line-height: 1.7;
 				max-width: 50rem;
-				margin: 2rem auto;
+				margin: 0 auto;
+				padding: 2rem;
 			}
 			code {
 				display: inline-block;
@@ -18,7 +19,7 @@
 				font-size: .9em;
 				padding: 0 .3rem;
 				position: relative;
-				z-index: 1
+				z-index: 1;
 			}
 			code:before {
 				background: #f2f2f2;
@@ -33,6 +34,7 @@
 			}
 			pre code {
 				display: block;
+				overflow-y: scroll;
 			}
 
 			form {
@@ -62,16 +64,23 @@
 			input[type="submit"]:hover {
 				background-color: #08769b;
 			}
+			hr {
+				margin: 2rem 0;
+				height: 0;
+				border: 0;
+				border-top: thin solid #ccc;
+			}
 		</style>
 	</head>
 	<body>
 		<h1>Zero Config Favicon Generator</h1>
 		<p>Paste or drop<sup>*</sup> a square SVG favicon into the textbox below & hit generate to get your favicons</p>
 		<form id="form" action="/.netlify/functions/zip" method="post">
-			<textarea required id="svg" name="svg"></textarea>
+			<textarea required id="svg" name="svg" placeholder="Paste or drop your SVG favicon"></textarea>
 			<input type="submit" value="Generate">
 		</form>
-		<p><sup>*</sup><small>Drop support only works in Chrome</small></p>
+		<p><small>* Drop support only works in Chrome</small></p>
+		<hr>
 		<h2>What is Generated</h2>
 		<p>Favicons generated are:</p>
 		<ul>
@@ -109,6 +118,8 @@
 	'backend' => [
 		'backendFavicon' => '/path/to/favicon_typo3.png',
 		'backendLogo' => '/path/to/favicon_22.png',</code></pre>
+			<hr>
+		<p>Created by <a href="https://www.mikestreety.co.uk/">Mike Street</a> for <a href="https://www.liquidlight.co.uk/">Liquid Light</a></p>
 		<script>
 			function dropfile(file) {
 				var reader = new FileReader();
