@@ -3,5 +3,4 @@
 	functions = "functions/"
 
 [functions."zip"]
-	node_bundler = "esbuild"
-	external_node_modules = ["sharp", "sharp-ico"]
+	external_node_modules = ["sharp", "sharp-ico", "svgo", "jszip"]
