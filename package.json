@@ -3,7 +3,7 @@
     "jszip": "^3.10.1",
     "sharp": "^0.35.3",
     "sharp-ico": "^0.1.5",
-    "svgo": "^2.8.2"
+    "svgo": "^2.8.3"
   },
   "name": "favicons",
   "version": "1.0.0",
